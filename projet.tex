@@ -1,0 +1,231 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{accents}
+\usepackage{lmodern}
+\usepackage{stmaryrd}
+
+\newtheorem{definition}{Définition}[section]
+\theoremstyle{plain}
+\newtheorem{exemple}{Exemple}[section]
+\newtheorem{rem}{Remarque}[section]{\theoremstyle{plain}}{}
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\newcommand\T{\mathcal{T}}
+\newcommand\R{\mathbb{R}}
+\newcommand\X{\hat{X}}
+
+\newcommand{\set}[2]{\{#1\:|\:#2\}}
+
+\title{Compactification}
+\author{Annabelle Ducret - Emile Chassaigne - Nolwenn Faivre d'Arcier}
+
+\begin{document}
+
+\maketitle
+%\mathaccent
+
+\chapter{Préliminaires}
+
+	\section{Topologie}
+
+		\begin{definition}[Topologie]
+			Soit X, un ensemble.\\
+			$\T \subset \cal{P}$(X) est une topologie sur X si :
+				\begin{enumerate}
+					\item $\varnothing, X \in \T$
+					\item $(U,V) \in \T^2 \Rightarrow U \cap V \in \T$
+					\item $(U_i)_{i\in I} \in \T^I \Rightarrow \bigcup\limits_{i\in I}^{} U_i \in \T$
+				\end{enumerate}
+		\end{definition}
+
+		\begin{definition}[Vocabulaire]
+			Soit $U \in \cal{P}$(X)
+			\begin{enumerate}
+				\item Si $U \in \T$ on dit que U est un ouvert
+				\item Si $X\setminus U \in \T$ on dit que U est un fermé
+			\end{enumerate}
+		\end{definition}
+
+		\begin{exemple}
+			\begin{enumerate}
+				\item $\T_{disc} = \cal{P}$(X) est appelée la topologie discrète sur X
+				\item $\T_{gross} = {\varnothing,X}$ est appelée la topologie grossière
+				\item $\T_{eucl} = \set{]a,b[}{(a,b)}\in \overline{\R}^2\}$ est la topologie euclidienne sur $\R$ avec $\overline{\R}=\R\cup\{\pm\infty\}$
+			\end{enumerate}
+		\end{exemple}
+
+		\begin{definition}[Voisinage]
+			Soient $(X, \T)$, un espace topologique et $x \in X$\\
+			V est un voisinage de $x$ si $\exists\: U \in \T\: /\: x \in U$ et $U \subset V$
+		\end{definition}
+
+	\section{Applications continues}
+
+		\begin{proposition}
+			Soient $(X,\T_X), (Y, \T_Y)$, deux espaces topologiques et $f : (X,\T_X) \rightarrow (Y, \T_Y)$ alors $f^{-1}(\T_Y)$ est une topologie sur X
+		\end{proposition}
+
+		\begin{definition}[Application continue]
+			Soient $(X,\T_X), (Y, \T_Y)$, deux espaces topologiques et $f : (X,\T_X) \rightarrow (Y, \T_Y)$\\
+			Alors $f$ est continue sur X $\Longleftrightarrow f^-1({\T_Y}) \subset \T_X$	
+		\end{definition}
+
+		\begin{definition}[Homéomorphisme]
+			Soient $(X,\T_X), (Y, \T_Y)$, deux espaces topologiques et $f : (X,\T_X) \rightarrow (Y, \T_Y)$\\
+			$$Si \left\{
+				\begin{array}{lll}
+					f \mbox{est continue}\\
+					f \mbox{est bijective}\\
+					f^{-1} \mbox{est continue}
+				\end{array}
+			\right. \mbox{alors f est un homéomorphisme.}$$
+		\end{definition}
+
+		\begin{definition}[Plongement]
+			Une application est un plongement si elle induit un homéomorphisme sur son image.
+		\end{definition}
+
+
+	\section{Compacité}
+
+		\begin{definition}
+			\begin{enumerate}
+				\item Soit $A = (A_i)_{i\in I} \in \cal{P}$$(X)^I$, on dit que A est un recouvrement de X si $\bigcup\limits_{i\in I} A_i = X$. Si, de plus, I est fini, on dit que A est un recouvrement fini
+				\item Soit $J \subset I$ alors A$^\prime$ = $(A_i)_{i\in J}$ est un sous-recouvrement de A. Si, de plus, J est fini, on dit que A$^\prime$ est un sous-recouvrement fini.
+			\end{enumerate}
+		\end{definition}
+
+		\begin{definition}[Espace de Hausdorff]
+			Un espace est séparé (ou de Hausdorff) si\\ $\forall (x,y )\in X^2, \exists\, V_x\, et\, V_y$, voisinages respectifs de x et y, tels que $V_x \cap V_y = \varnothing$
+		\end{definition}
+
+		\begin{exemple}
+			\begin{enumerate}
+				\item Un ensemble muni de la topologie grossière ou discrète est séparé.
+				\item $(\R, \T_{eucl})$ est un espace séparé.
+			\end{enumerate}
+		\end{exemple}
+
+		\begin{definition}
+			\begin{enumerate}
+				\item Un espace topologique X est quasi-compact si tout recouvrement de X admet un sous-recouvrement fini.
+				\item Un espace compact est un espace de Hausdorff quasi-compact.
+			\end{enumerate}
+		\end{definition}
+		
+		\begin{definition}
+			\begin{enumerate}
+				\item $(X, \T)$ est séquentiellement compact si toute suite de X possède au moins une sous-suite convergente.
+				\item $(X, \T)$ est un espace localement compact s'il est de Hausdorff et admet un voisinage compact en chacun de ses points.
+			\end{enumerate}
+		\end{definition}
+
+		\begin{definition}
+			\begin{enumerate}
+				\item Un espace topologique X est quasi-compact si tout recouvrement de X admet un sous-recouvrement fini.
+				\item Un espace compact est un espace de Hausdorff quasi-compact.
+			\end{enumerate}
+		\end{definition}
+
+		\begin{definition}[Compactification]
+			Une compactification d'un espace X est un couple (\^{X},f) où \^{X} est un espace topologique compact et f un homéomorphisme de X dans un sous-espace dense de X 
+		\end{definition}
+
+Nous allons maintenant voir deux exemples de compactification avec le compactifié d'Alexandrov et le compactifié de Stone-\v{C}ech.
+
+\chapter{Compactifié d'Alexandrov}
+
+	\section{Définitions}
+
+		\begin{definition}
+			Soit (X,$\T$), un espace topologique.\\On considère $\hat{X} = X\cup \{+\infty\}$ et $\hat{\T} = \T\cup\set{X\setminus K}{K\subset$ X, K compact et fermé}.\\
+			Alors l'espace $(\hat{X}, \hat{\T})$ est le compactifié d'Alexandrov de $(X,\T)$.
+		\end{definition}
+		
+		\textbf{Preuve :} Vérifions que $(\hat{X}, \hat{\T})$ est un espace topologique.
+		    \begin{enumerate}
+	        	\item $\varnothing \in \hat{\T}$
+	        	\item Soient U et V deux ouverts de $\hat{X}$. Montrons que $U \cap V$ est ouvert. \\
+        		Si U et V contiennent $\omega$ alors $U \cap V$ le contient aussi. $X\setminus U \cap V = (X\setminus U) \cup (X\setminus V) $. Or l'union finie de compacts est compacte donc $X\setminus U \cap V$ est compact.\\
+        		Si U et V ne contiennent pas $\omega$ alors ce sont des ouverts de X et leur intersection est un ouvert de X donc de $\hat{\T}$.\\
+        		Si U contient $\omega$ et V ne le contient pas alors leur instersection ne le contient pas. $U \cap V = (U \cap X)\cap V$ avec $(U \cap X)$ ouvert de X. Donc on a une intersection de deux ouverts de X, c'est un ouvert de X et donc de $\hat{X}$.
+	        	\item Soit $(A_i)_{i\in I}$ un ensemble d'ouverts de $\hat{X}$, Montrons que son union est un ouvert.\\
+	        	Si $\omega$ n'est inclus dans aucun des $A_i$ alors $\bigcup\limits_{i\in I} A_i$ est un ouvert comme union arbitraire d'ouverts de X.\\
+	        	Si $\exists\ J\subset\mathbb{N}\ /\ \forall\ j\in\ J, \infty\in A_{j}$ alors $\forall j \in J, A_j=X\setminus K_j,\ K_j$ étant un compact fermé.\\
+	        	Ainsi$$
+	        	\left.
+		        	\begin{array}{lll}
+		        		\bigcup\limits_{i\in I}A_i & = & (\bigcup\limits_{i\in I\setminus J}A_i) \cup (\bigcup\limits_{j\in J}A_j)\\
+		        		& = & A\cup(\bigcup\limits_{j\in J}(X\setminus K_j)),\: A\in\T\\
+		        		& = & A\cup X\setminus(\bigcap\limits_{j\in J}K_j)\\
+		        	\end{array}
+	        	\right.$$
+	        	Or $K_j$ est fermé $\forall j\in J$ donc $\bigcap\limits_{j\in J}K_j$ est un fermé donc $$A\cup (X\setminus(\bigcap\limits_{j\in J}K_j))\in \hat{X}$$
+	        \end{enumerate}
+
+		\begin{theorem} Soit X, un espace localement compact. Alors il existe \^X, un espace compact tel que :
+			\begin{enumerate}
+				\item X est un sous-espace de \^X.
+				\item \^X\textbackslash X est réduit à un point.
+				\item X est dense dans \^X $\Longleftrightarrow$ X n'est pas compact $\Longleftrightarrow \infty$ n'est pas un point isolé dans \^X
+				\item Soient Y, un espace compact et g : $X \rightarrow Y$ un homéomorphisme de X sur g(X) tel que Y\textbackslash g(X) soit réduit à un point \{$\omega$\}.\\
+				Alors l'application h : \^X $\rightarrow$ Y définie par h(x) = $\left\{
+					\begin{array}{lll}
+						g(x) & si & x\in X\\
+						\omega & si & x = \infty
+					\end{array}
+					\right.$\\
+				est un homéomorphisme.
+				\item Si (Z,f) est une compactification de X alors il existe une application surjective $\varphi : (Z,\T')\rightarrow (\X,\hat{\T})$ telle que $\forall \:x \in X, \varphi\circ f(x) = x$.
+			\end{enumerate}
+		\end{theorem}
+
+		\textbf{Preuve :} 
+			\begin{enumerate}
+				\item X est bien inclus dans \^X. Reste à montrer que $\T$ est la topologie induite sur X par \^X.\\
+				Soit U, un ouvert de \^X, alors $U \in \T$ ou $U = X\setminus K \cup \{\infty\}$ avec K compact de (X,$\T$).\\
+				Dans le premier cas, $U\cap X = U \in \T$, dans l'autre cas, $U\cap X = X\setminus K$. Or (X, $\T$) est localement compact donc séparé donc K est un fermé de (X, $\T$) donc $X\setminus K$ est un ouvert de (X,$\T$). Donc la topologie induite sur X est incluse dans $\T$.\\
+				De plus, tout ouvert U de (X, $\T$) peut être vu comme un ouvert de \^X et donc $U = U\cap X$.\\
+				Ainsi X est un sous-espace de \^X.
+				\item Déjà vu.
+				\item Si $X$ est dense dans $\hat{X}$, alors $\infty \in \overline{X}$ donc $\infty$ n'est pas isolé.\\
+				De plus, si X est compact, alors \^X$\setminus$X est un ouvert donc $\infty$ est isolé.
+				Enfin, si X n'est pas dense alors son adhérence est strictement incluse dans \^X. Or X$\setminus$\^X est réduit à un point qui est donc isolé et donc X est compact.
+				\item g est un homéomorphisme donc h est bijective sur \^X et continue sur X, montrons qu'elle est continue en $\infty$.\\
+				Soit V, un voisinage ouvert de $\omega$, alors $Y\setminus V$ est un compact de $Y\setminus\{\omega\} = g(X)$. Or g est un homéomorphisme de $X$ sur $g(X)$ donc $\hat{X}\setminus h^{-1}(V) = h^{-1}(Y\setminus V) = g^{-1}(Y\setminus V)$ est un compact de X donc $h^{-1}(V)$ est un ouvert de X donc $h$ est continue en $\infty$. Enfin, $\hat{X}$ est compact donc $h$ est un homéomorphisme de $\hat{X}$ dans $Y$.
+				\item Soit $\varphi\,/\left\{
+					\begin{array}{lll}
+						\varphi(f(x)) = x & si & x\in X\\
+						\varphi(z) = \infty & si & z\in Z\setminus f(X)
+					\end{array}
+					\right.$ alors $\varphi$ est surjective.\\
+					Soit $U\in \T$ alors $\varphi\circ f(U) = U$. $\varphi$ est surjective donc $f(U) = \varphi^{-1}(U)$. $f$ est un homéomorphisme de $X$ dans $f(X)$ donc $f(U)$ est un ouvert de $Z$ donc $\varphi^{-1}(U)$ aussi donc $\varphi$ est continue sur $f(X)$. Reste à montrer qu'elle l'est sur $Z\setminus f(X)$.\\
+					Soit $U\in\hat{\T}$ tel que $\infty\in U$ alors $K=\X\setminus U$ est un compact de $X$ donc $f(X)$ est un compact de $Z$ donc $\varphi^{-1}(U)=Z\setminus f(K)$ est un ouvert de $Z$ donc $\varphi$ est continue sur $Z\setminus f(X)$.
+			\end{enumerate}
+
+        \begin{proof}
+			Montrons maintenant que $(\hat{X}, \hat{\T})$ est compact.\\
+			Montrons que $(\hat{X}, \hat{\T})$ est séparé. Soit $x,y \in$ \^X.\\
+		    Si $x,y \in X$, alors il existe U,V des ouverts disjoints contenant respectivement x et y car (X,$\T$) est séparé.\\
+		    Si y$=\omega$, X étant localement compact, $\exists\, K \subset X$ voisinage compact de x. Donc X$\setminus K $ est ouvert et contient $\omega$. Et  $\exists\, U \subset K$ un voisinage ouvert de x. On a bien $X\setminus K    \cap U ={\varnothing}$ et $(\hat{X}, \hat{\T})$ est séparé.\\
+		    Montrons que $(\hat{X}, \hat{\T})$ est quasi-compact.\\
+		    Soit $\hat{X}=\bigcup\limits_{i\in I} A_i$ où les $A_i$ sont des ouverts de \^X.$\exists k \in I$ tel que $\omega \in A_k$ et tel que $\hat{X}\setminus A_k$ est un compact de X. $\forall i \in I, A_i\cap X$ est un ouvert de X. On a alors $\hat{X}\setminus A_k \subset \bigcup\limits_{i\in I\setminus{\{k\}}} (X \cap A_i)$. Par compacité de $\hat{X}\setminus A_k, \exists J fini \subset I\setminus{\{k\}}$ tel que $\hat{X}\setminus A_k \subset  \bigcup\limits_{i\in J} (X \cap A_i)$, par suite $\hat{X}= A_k \cup (\bigcup\limits_{i\in J} A_i)$
+		\end{proof}	
+		
+		\begin{proposition}
+			$(\hat{X}, \hat{\T})$ est séparé $\Longleftrightarrow$ (X,$\T$) est séparé et localement compact.
+		\end{proposition}		
+
+		\begin{proof} $\Rightarrow$ $(\hat{X}, \hat{\T})$ est supposé séparé. On veut montrer que (X,$\T$) est séparé et localement compact. (X,$\T$) est séparé comme sous-espace d'un espace séparé. Soient $x \in X$, U un voisinage ouvert de x, V un voisinage ouvert de $\omega$, tels que $\ U \cap V ={\varnothing}$. $\hat{X}\setminus V$ est alors un compact contenant U (qui contient x). C'est donc un voisinage compact de x. \\
+		$\Leftarrow$ déjà vu (preuve 2.1.2).
+		\end{proof}
+
+
+\end{document}
